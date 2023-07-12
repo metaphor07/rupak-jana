@@ -6,6 +6,7 @@ import Skeleton from "@mui/material/Skeleton";
 import FacebookShare from "./components/FacebookShare";
 import TwitterShare from "./components/TwitterShare";
 import WhatsappShare from "./components/WhatsappShare";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 const App = () => {
   // the first hook is used to store the "image url"
@@ -35,37 +36,43 @@ const App = () => {
   };
 
   return (
-    <div className="container">
-      {/* if image available then show the image || other wise show the normal skeleton */}
-      {randomImage ? (
-        <img src={randomImage} alt="Random Image" className="centered-image" />
-      ) : (
-        <>
-          <p>Image Loading...</p>
-          {/* it is react component for showing the skeleton of loading functionality */}
-          <Skeleton width={500} height={300} />
-        </>
-      )}
+    <HelmetProvider>
+      <div className="container">
+        {/* if image available then show the image || other wise show the normal skeleton */}
+        {randomImage ? (
+          <img
+            src={randomImage}
+            alt="Random Image"
+            className="centered-image"
+          />
+        ) : (
+          <>
+            <p>Image Loading...</p>
+            {/* it is react component for showing the skeleton of loading functionality */}
+            <Skeleton width={500} height={300} />
+          </>
+        )}
 
-      {/* It is share button when click it shows three item "facebook, twitter and whatsapp" */}
-      <div>
-        <button className="shareBtn" onClick={() => setShare(!share)}>
-          <Share className="social-shareIcon" />
-        </button>
-      </div>
-
-      {/* when clicked then show */}
-      {share && (
-        <div className="share-button-container">
-          <FacebookShare randomImage={randomImage} />
-          <TwitterShare randomImage={randomImage} />
-          <WhatsappShare randomImage={randomImage} />
+        {/* It is share button when click it shows three item "facebook, twitter and whatsapp" */}
+        <div>
+          <button className="shareBtn" onClick={() => setShare(!share)}>
+            <Share className="social-shareIcon" />
+          </button>
         </div>
-      )}
 
-      {/* here we place a normally button which fetch random image without loading the page */}
-      {/* <button onClick={fetchRandomImage}>Fetch New Image</button> */}
-    </div>
+        {/* when clicked then show */}
+        {share && (
+          <div className="share-button-container">
+            <FacebookShare randomImage={randomImage} />
+            <TwitterShare randomImage={randomImage} />
+            <WhatsappShare randomImage={randomImage} />
+          </div>
+        )}
+
+        {/* here we place a normally button which fetch random image without loading the page */}
+        {/* <button onClick={fetchRandomImage}>Fetch New Image</button> */}
+      </div>
+    </HelmetProvider>
   );
 };
 

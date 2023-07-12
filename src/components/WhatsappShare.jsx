@@ -1,4 +1,5 @@
-import { Helmet } from "react-helmet";
+// import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import { WhatsappShareButton } from "react-share";
 import { WhatsApp } from "@mui/icons-material";
 

@@ -1,4 +1,5 @@
-import { Helmet } from "react-helmet"; //it is used to generate dynamic metadata
+// import { Helmet } from "react-helmet"; //it is used to generate dynamic metadata
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import { FacebookShareButton } from "react-share";
 import { Facebook } from "@mui/icons-material";
 
