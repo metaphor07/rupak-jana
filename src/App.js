@@ -7,6 +7,7 @@ import FacebookShare from "./components/FacebookShare";
 import TwitterShare from "./components/TwitterShare";
 import WhatsappShare from "./components/WhatsappShare";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import { NavLink } from "react-router-dom";
 
 const App = () => {
   // the first hook is used to store the "image url"
@@ -63,7 +64,12 @@ const App = () => {
         {/* when clicked then show */}
         {share && (
           <div className="share-button-container">
-            <FacebookShare randomImage={randomImage} />
+            <NavLink
+              to={`https://facebook.com/sharer/sharer.php?u=${window.location.href}`}
+            >
+              {/* <a target="_blank" href="https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpearlwater.in%2Fpump%2Fkirloskar-1-hp-domestic-water-pump" class="jssocials-share-link"><i class="fa fa-facebook jssocials-share-logo"></i></a> */}
+              <FacebookShare randomImage={randomImage} />
+            </NavLink>
             <TwitterShare randomImage={randomImage} />
             <WhatsappShare randomImage={randomImage} />
           </div>
